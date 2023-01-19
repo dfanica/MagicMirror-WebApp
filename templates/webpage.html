@@ -1,0 +1,64 @@
+<html>
+<head>
+  <title>MM Controls</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+  <link rel="icon" type="image/x-icon" href="static/node_modules/bootstrap-icons/icons/display.svg">
+  <!-- STYLES -->
+  <link rel="stylesheet" href="static/node_modules/bootstrap-icons/font/bootstrap-icons.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="static/node_modules/bootstrap/dist/css/bootstrap.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body style="touch-action:none">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a href=/><button type="button" class="btn btn-light btn-lg"><i class="bi bi-display"></i>&nbsp; electriQ</button></a>
+      <span data-bs-toggle="tooltip" data-bs-placement="bottom" title='25" Full HD HDR 165Hz FreeSync Gaming Monitor'>eiQ-25FHD165TFSGH</span>
+      <div class="float-end">
+	      <a href=\q type="button" class="btn btn-danger btn-sm"><i class="bi bi-power"></i><span class="d-none d-md-inline">&nbsp; POWER</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="row p-2" role="group" aria-label="Control Buttons">
+      {% if menu_on == '1' %}
+        <a href=\w type="button" class="btn btn-outline-success btn-lg pt-3 pb-3 mx-1 col"><i class="bi bi-back"></i><span class="d-none d-md-inline">&nbsp; ENTER</span></a>
+        <a href=\e type="button" class="btn btn-outline-primary btn-lg pt-3 pb-3 mx-1 col"><i class="bi bi-arrow-down-left-square-fill"></i><span class="d-none d-md-inline">&nbsp; LEFT - DOWN</span></a>
+        <a href=\r type="button" class="btn btn-outline-primary btn-lg pt-3 pb-3 mx-1 col"><i class="bi bi-arrow-up-right-square-fill"></i><span class="d-none d-md-inline">&nbsp; RIGHT - UP</span></a>
+        <a href=\t type="button" class="btn btn-outline-danger btn-lg pt-3 pb-3 mx-1 col"><i class="bi bi-backspace-fill"></i><span class="d-none d-md-inline">&nbsp; BACK</span></a>
+      {% else %}
+        <a href=\w type="button" class="btn btn-outline-success btn-lg pt-3 pb-3 mx-1 col"><i class="bi bi-back"></i><span class="d-none d-md-inline">&nbsp; MENU</span></a>
+        <a href=\aim_assist type="button" class="btn btn-outline-primary btn-lg pt-3 pb-3 mx-1 col"><i class="bi bi-bullseye"></i><span class="d-none d-md-inline">&nbsp; AIM ASSIST</span></a>
+        <a href=\view_mode type="button" class="btn btn-outline-primary btn-lg pt-3 pb-3 mx-1 col"><i class="bi bi-stars"></i><span class="d-none d-md-inline">&nbsp; VIEW MODE</span></a>
+        <a href=\t type="button" class="btn btn-outline-danger btn-lg pt-3 pb-3 mx-1 col"><i class="bi bi-hdmi-fill"></i><span class="d-none d-md-inline">&nbsp; INPUT SELECT</span></a>
+      {% endif %}
+    </div>
+
+    <div class="alert alert-warning" role="alert">
+      There's a 5 seconds window of interaction after which the menu will close automatically.
+    </div>
+
+    <div class="row mt-5">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a href=\service-menu type="button" class="btn btn-outline-secondary p-3"><i class="bi bi-wrench-adjustable-circle-fill"></i>&nbsp; SERVICE MENU</a>
+        <small class="alert alert-secondary text-muted m-0">
+          Ensure <a href="\q" class="text-danger text-decoration-none"><i class="bi bi-power"> </i>Power</a> is off.
+          After this option is activated opening the <a href="\w" class="text-success text-decoration-none"><i class="bi bi-back"> </i>Menu</a> will display the hidden <strong>Service Menu</strong>.
+          <a href="\q" class="text-danger text-decoration-none"><i class="bi bi-power"> </i>Power</a> off again to revert back to the default menu.
+        </small>
+      </div>
+    </div>
+  </div>
+  
+  <!-- SCRIPTS -->
+  <script src="static/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/JavaScript">
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+    {% if menu_on == '1' %}
+    setTimeout("location.href = '/';", 5000); // redirect to root without menu_on after 5 seconds
+    {% endif %}
+  </script>
+</body>
+</html>
