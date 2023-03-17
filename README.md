@@ -8,49 +8,36 @@ This is a Flask web application designed to control various features of a Raspbe
 
 ## Getting Started
 
-To run the application, you will need to install Flask and ddcutil. Once you have installed these packages, you can start the application by running `python app.py`.
+To run the application, you will need to install Flask and ddcutil. Once you have installed these packages, you can start the application by running `python webapp.py`.
 
 ## Application Structure
 
 The application is structured as follows:
 
-* `app.py`: This is the main application file. It contains the Flask routes and the API endpoints.
+* `webapp.py`: This is the main application file. It contains the Flask routes and the API endpoints.
 * `templates/`: This directory contains the HTML templates used by the application.
 * `static/`: This directory contains static files used by the application, such as CSS stylesheets and JavaScript files.
 
-## Flask Routes
+### GPIO Monitor Controls Routes
 
-The following Flask routes are defined in `app.py`:
+- `/q`: Power press.
+- `/w`: Menu press.
+- `/e`: Left press.
+- `/aim_assist`: Aim assist press.
+- `/r`: Right press.
+- `/view_mode`: View mode press.
+- `/t`: Auto press.
+- `/input_select`: Input select press.
+- `/service-menu`: Combo press.
 
-* `/`: The root route, which displays the main UI for the application.
-* `/q`: A route that presses the power button.
-* `/w`: A route that presses the menu button.
-* `/e`: A route that presses the left button.
-* `/aim_assist`: A route that presses the aim assist button.
-* `/r`: A route that presses the right button.
-* `/view_mode`: A route that presses the view mode button.
-* `/t`: A route that presses the auto button.
-* `/input_select`: A route that presses the input select button.
-* `/service-menu`: A route that enters the service menu.
-* `/api/audio-output`: An API endpoint that returns the current status of the audio output.
-* `/api/display-state`: An API endpoint that returns the current state of the display (on or off).
-* `/api/display-on`: An API endpoint that turns on the display.
-* `/api/display-off`: An API endpoint that turns off the display.
-* `/api/display-brightness`: An API endpoint that returns the current brightness level of the display.
-* `/api/display-brightness-low`: An API endpoint that sets the brightness of the display to low.
-* `/api/display-brightness-high`: An API endpoint that sets the brightness of the display to high.
+### API Routes
 
-## REST API
-
-The following REST API endpoints are defined in `app.py`:
-
-* `/api/audio-output`: An API endpoint that returns the current status of the audio output.
-* `/api/display-state`: An API endpoint that returns the current state of the display (on or off).
-* `/api/display-on`: An API endpoint that turns on the display.
-* `/api/display-off`: An API endpoint that turns off the display.
-* `/api/display-brightness`: An API endpoint that returns the current brightness level of the display.
-* `/api/display-brightness-low`: An API endpoint that sets the brightness of the display to low.
-* `/api/display-brightness-high`: An API endpoint that sets the brightness of the display to high.
+- `/api/audio-output`: Returns the current audio output status.
+- `/api/display-state`: Returns the current display state (power on or off).
+- `/api/display-on`: Switches the display on if it is currently off.
+- `/api/display-off`: Switches the display off if it is currently on.
+- `/api/display-brightness`: Returns the current display brightness level.
+- `/api/display-brightness/<int:brightness_level>`: Sets the display brightness level to the specified value.
 
 ## GPIO Pins
 
@@ -91,7 +78,7 @@ The service menu is accessed by pressing the menu and power buttons simultaneous
 
 ## Development
 
-To run the application in development mode, uncomment the `app.run(debug=True, host="0.0.0.0", port="5000")` line in `app.py`.
+To run the application in development mode, uncomment the `app.run(debug=True, host="0.0.0.0", port="5000")` line in `webapp.py`.
 
 ## Production
 
